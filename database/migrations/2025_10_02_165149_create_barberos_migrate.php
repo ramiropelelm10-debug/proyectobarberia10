@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
    {
     Schema::create('barberos', function (Blueprint $table) {
-        $table->id('Id_Barbero'); // PK personalizada
-        $table->string('Nombre');
-        $table->string('Apellido');
-        $table->string('Email')->unique(); // email único
-        $table->string('Especialidad');
+        $table->id(); // PK personalizada
+        $table->string('nombre');
+        $table->string('apellido');
+        $table->string('email')->unique(); // email único
+        $table->string('especialidad');
         $table->timestamps(); // created_at y updated_at
     });
 }

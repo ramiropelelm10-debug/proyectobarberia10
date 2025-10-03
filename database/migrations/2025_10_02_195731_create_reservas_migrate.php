@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->id('Id_Reserva');
-            $table->unsignedBigInteger('Id_Cliente');
-            $table->unsignedBigInteger('Id_Barbero');
-            $table->dateTime('FechaHora');
-            $table->enum('Estado', ['pendiente', 'confirmada', 'cancelada'])->default('pendiente');
+            $table->id();
+            $table->dateTime('fecha_hora');
+            $table->enum('estado', ['pendiente', 'confirmada', 'cancelada'])->default('pendiente');
             $table->timestamps();
-
-            $table->foreign('Id_Cliente')->references('Id_Cliente')->on('clientes')->onDelete('cascade');
-            $table->foreign('Id_Barbero')->references('Id_Barbero')->on('barberos')->onDelete('cascade');
+            // un clinete ase n reservas (1:N)
+            $table->unsignedBigInteger('id_cliente');
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
+            // un barbero atiende n reservas (1:N)
+            $table->unsignedBigInteger('id_barbero');
+            $table->foreign('id_barbero')->references('id')->on('barberos')->onDelete('cascade');
         });
     }
 
