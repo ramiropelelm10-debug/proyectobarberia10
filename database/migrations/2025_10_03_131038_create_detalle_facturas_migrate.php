@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
              $table->float('precio');
             $table->timestamps();
-            
+            //
             $table->unsignedBigInteger('id_reserva');
             $table->foreign('id_reserva')->references('id')->on('reservas')->onDelete('cascade');
-            
+            //
             $table->unsignedBigInteger('id_servicio');
             $table->foreign('id_servicio')->references('id')->on('servicios')->onDelete('cascade');
-
+            //
              $table->unsignedBigInteger('id_factura');
             $table->foreign('id_factura')->references('id')->on('facturas')->onDelete('cascade');
         });

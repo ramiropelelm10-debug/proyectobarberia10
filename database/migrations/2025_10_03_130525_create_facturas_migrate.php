@@ -16,7 +16,7 @@ return new class extends Migration
             $table->float('total');
             $table->text('descripcion');
             $table->float('precio');
-
+              //1 a N
              $table->unsignedBigInteger('id_cliente');
             $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
 
