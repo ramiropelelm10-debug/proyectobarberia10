@@ -19,10 +19,7 @@ class Barbero extends Model
         'email',
         'especialidad',
     ];
-    // Un user tiene un barbero
-public function barbero() {
-    return $this->hasOne(Barbero::class, 'id_users');
-}
+    
 
 }
 

@@ -14,7 +14,7 @@ class BarberoController extends Controller
     {
         // Trae todos los registros de la tabla 'barberos' usando el modelo Barbero
     $barberos = Barbero::all();
-
+            dd($barberos);
     // Retorna la vista 'barberos.index' y pasa la variable $barberos a la vista
     // 'compact' crea un arreglo ['barberos' => $barberos] para que la vista pueda usarlo
     return view('barberos.index', compact('barberos'));

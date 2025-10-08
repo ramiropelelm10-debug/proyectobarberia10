@@ -19,8 +19,8 @@ return new class extends Migration
         $table->string('especialidad');
         $table->timestamps(); // created_at y updated_at
         // la relacion es de 1 a 1 
-        $table->unsignedBigInteger('id_user')->unique();
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+        // $table->unsignedBigInteger('id_user')->unique();
+        //     $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
     });
 }
 

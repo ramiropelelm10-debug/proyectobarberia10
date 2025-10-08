@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $fillable=['nombre','apellido','telefono','email'];
     public $timestamps=true;
     
-    // relaciones 
+    // relaciones de 1 a 1 
     public function usuario(): HasOne{
         return $this->hasOne(User::class);
     }
