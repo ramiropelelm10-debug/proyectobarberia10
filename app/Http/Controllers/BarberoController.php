@@ -14,10 +14,10 @@ class BarberoController extends Controller
     {
         // Trae todos los registros de la tabla 'barberos' usando el modelo Barbero
     $barberos = Barbero::all();
-            dd($barberos);
+           // dd($barberos);
     // Retorna la vista 'barberos.index' y pasa la variable $barberos a la vista
     // 'compact' crea un arreglo ['barberos' => $barberos] para que la vista pueda usarlo
-    return view('barberos.index', compact('barberos'));
+    return view('admin.barbero.index', compact('barberos'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BarberoController extends Controller
     {
          // Mostrar la vista con el formulario de creación
     // Aquí el usuario puede ingresar nombre, apellido, email y especialidad
-    return view('barberos.create');
+    return view('admin.barbero.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class BarberoController extends Controller
     Barbero::create($request->all());
 
     // Redirigir al listado de barberos con un mensaje de éxito
-    return redirect()->route('barberos.index')->with('success', 'Barbero creado correctamente');
+    return redirect()->route('barbero.index')->with('success', 'Barbero creado correctamente');
     }
 
     /**
@@ -60,7 +60,7 @@ class BarberoController extends Controller
         
     // Muestra los datos de un barbero específico
     // $barbero ya tiene los datos gracias a Laravel (model binding)
-    return view('barberos.show', compact('barbero'));
+    return view('admin.barbero.show', compact('barbero'));
     }
 
     /**
@@ -70,7 +70,7 @@ class BarberoController extends Controller
     {
          // Muestra el formulario para editar un barbero
     // $barbero ya tiene los datos gracias al model binding
-    return view('barberos.edit', compact('barbero'));
+    return view('admin.barbero.edit', compact('barbero'));
     }
 
     /**
@@ -90,7 +90,7 @@ class BarberoController extends Controller
     $barbero->update($request->all());
 
     // Redirigir al listado de barberos con un mensaje de éxito
-    return redirect()->route('barberos.index')->with('success', 'Barbero actualizado correctamente');
+    return redirect()->route('barbero.index')->with('success', 'Barbero actualizado correctamente');
     }
 
     /**
@@ -102,6 +102,6 @@ class BarberoController extends Controller
     $barbero->delete();
 
     // Redirigir al listado de barberos con un mensaje de éxito
-    return redirect()->route('barberos.index')->with('success', 'Barbero eliminado correctamente');
+    return redirect()->route('barbero.index')->with('success', 'Barbero eliminado correctamente');
     }
 }
