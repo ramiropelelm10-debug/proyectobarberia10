@@ -11,5 +11,8 @@ Route::get('/plantilla', function () {
 });
 
 use App\Http\Controllers\BarberoController;
+use App\Http\Controllers\ClienteController;
 
-Route::resource('barberos', BarberoController::class);
+Route::resource('barbero', BarberoController::class);
+
+Route::resource('cliente', ClienteController::class);

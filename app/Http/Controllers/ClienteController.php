@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -14,7 +15,7 @@ class ClienteController extends Controller
     {
         // Trae todos los clientes de la base de datos usando el modelo Cliente
         $clientes = Cliente::all();
-         //dd($clientes);
+        //dd($clientes);
         // Retorna la vista 'clientes.index' y le pasa la variable $clientes
         // Compact crea un arreglo con la variable que se va a usar en la vista
         return view('clientes.index', compact('clientes'));
@@ -61,7 +62,8 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        $cliente = Cliente::findOrFail($cliente->id);
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -69,7 +71,8 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        $cliente = Cliente::findOrFail($cliente->id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -77,7 +80,23 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:clientes,email',
+            'telefono' => 'nullable|string|max:15', // puede ser opcional
+        ]);
+        $cliente = Cliente::find($cliente->id);
+        // 2️⃣ Crear un nuevo cliente con los datos validados
+        $cliente->update([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+        ]);
+
+        // 3️⃣ Redirigir al listado de clientes con un mensaje de éxito
+        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado.corectamente');
     }
 
     /**
@@ -85,6 +104,9 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+
+        // Redirigir al listado de barberos con un mensaje de éxito
+        return redirect()->route('cliente.index')->with('success', 'cliente eliminado correctamente');
     }
 }
