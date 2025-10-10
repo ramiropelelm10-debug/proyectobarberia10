@@ -18,7 +18,7 @@ class ClienteController extends Controller
         //dd($clientes);
         // Retorna la vista 'clientes.index' y le pasa la variable $clientes
         // Compact crea un arreglo con la variable que se va a usar en la vista
-        return view('clientes.index', compact('clientes'));
+        return view('cliente.index', compact('clientes'));
     }
 
     /**
