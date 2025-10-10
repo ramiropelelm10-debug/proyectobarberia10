@@ -56,16 +56,17 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.addEventListener("click", function(e) {
                 if (e.target && e.target.classList.contains('btn-eliminar')) {
                     e.preventDefault();
+                
                     const form = e.target.closest('form');
                     Swal.fire({
-                        title: '¿Estás seguro de eliminar el registro?',
+                        title: '¿Estás seguro de eliminar el barbero?',
                         text: "¡No podrás revertir esto!",
                         icon: 'warning',
                         showCancelButton: true,
