@@ -47,7 +47,7 @@
             </table>
 
             <!-- Paginación -->
-            {{ $facturas->links('pagination::bootstrap-5') }}
+            {{-- {{ $facturas->links('pagination::bootstrap-5') }} --}}
         </div>
     </div>
 @endsection

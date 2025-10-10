@@ -36,16 +36,16 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              {{-- <a href="{{ route('clientes.index') }}" class="nav-link">
+                               <a href="{{ route('cliente.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-people"></i>
                                         <p>Clientes</p>
                                     </a>
-                                    <a href="{{ route('factura.index') }}" class="nav-link">
+                                     <a href="{{ route('factura.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-receipt"></i>
                                         <p>Facturas</p>
                                     </a>
 
-                                    <a href="{{ route('servicios.index') }}" class="nav-link">
+                                     <a href="{{ route('servicio.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-scissors"></i>
                                         <p>Servicios</p>
                                     </a>
@@ -53,23 +53,13 @@
                                     <a href="{{ route('reserva.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-calendar-check"></i>
                                         <p>Reservas</p>
-                                    </a> --}}
+                                    </a> 
 
                           </li>
-                          <li class="nav-item">
-                              <a href="./index3.html" class="nav-link">
-                                  <i class="nav-icon bi bi-circle"></i>
-                                  <p>Dashboard v3</p>
-                              </a>
-                          </li>
+                          
                       </ul>
                   </li>
-                  <li class="nav-item">
-                      <a href="{{route('cliente.index')}}" class="nav-link">
-                          <i class="nav-icon bi bi-palette"></i>
-                          <p>   Clientes</p>
-                      </a>
-                  </li>
+                
                  <li class="nav-item">
                       <a href="{{route('barbero.index')}}" class="nav-link">
                           <i class="nav-icon bi bi-palette"></i>
