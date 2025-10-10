@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Brberos')
+@section('title', 'Barberos')
 
 @section('styles')
     <style>
@@ -13,7 +13,7 @@
     <div class="card card-primary card-outline mb-4">
         <div class="card-header">
             <div class=" d-flex justify-content-between align-items-center">
-                <div class="card-title">Listado de barbero</div>
+                <div class="card-title">Listado de barbero ssss</div>
                 <a href="{{ route('barbero.create') }}" class="btn btn-primary">Nuevo barbero</a>
             </div>
         </div>

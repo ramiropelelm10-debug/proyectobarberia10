@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('admin.layouts.main')
 
 @section('title', 'Lista de Clientes')
 
@@ -7,7 +7,7 @@
         <div class="card-header">
             <h3 class="card-title">Gestión de Clientes</h3>
             <div class="card-tools">
-                <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm">
+                <a href="{{ route('cliente.create') }}" class="btn btn-success btn-sm">
                     <i class="fas fa-user-plus"></i> Nuevo Cliente
                 </a>
             </div>
@@ -41,11 +41,11 @@
                             <td>{{ $cliente->telefono }}</td>
                             <td>{{ $cliente->direccion }}</td>
                             <td>
-                                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
-                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST"
+                                <form action="{{ route('cliente.destroy', $cliente->id) }}" method="POST"
                                     style="display:inline-block">
                                     @csrf
                                     @method('DELETE')

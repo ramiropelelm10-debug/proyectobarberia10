@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+{{-- @extends('admin.layouts.main')
 
 @section('title', 'Nueva Factura')
 
@@ -16,4 +16,4 @@
             <!-- Seleccionar cliente -->
             <div class="mb-3">
                 <label for="id_cliente" class="form-label @error('id_cliente') is-invalid @enderror">Cliente</label>
-                <select name="id_cliente" class
+                <select name="id_cliente" class --}}
