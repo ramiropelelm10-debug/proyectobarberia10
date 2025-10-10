@@ -9,7 +9,7 @@ class BarberoController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */ 
     public function index()
     {
         // Trae todos los registros de la tabla 'barberos' usando el modelo Barbero
