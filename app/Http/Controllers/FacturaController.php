@@ -26,11 +26,14 @@ return view('admin.factura.index', compact('facturas'));
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        $facturas = Factura::with('cliente')->get(); // Trae las facturas junto con info del cliente
-return view('admin.factura.index', compact('facturas'));
+{
+    $clientes = Cliente::all();    // Todos los clientes
+    $reservas = Reserva::all();    // Todas las reservas
+    $servicios = Servicio::all();  // Todos los servicios
 
-    }
+    return view('admin.factura.create', compact('clientes', 'reservas', 'servicios'));
+}
+
 
     /**
      * Store a newly created resource in storage.

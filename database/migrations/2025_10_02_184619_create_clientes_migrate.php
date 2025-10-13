@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamps();
             //unique solo se utiliza en relaciones de 1 a 1 baber , cliente, admin 
-             $table->unsignedBigInteger('id_user')->unique();
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+          $table->unsignedBigInteger('id_user')->nullable()->unique();
+$table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

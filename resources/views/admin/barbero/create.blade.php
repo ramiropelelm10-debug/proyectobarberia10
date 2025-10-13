@@ -16,6 +16,8 @@
             <div class="mb-3">
                 <label for="nombre" class="form-label @error('nombre') is-invalid @enderror">Nombre de barbero</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Ingrese nombre completo" required>
+                
+
                 @error('nombre')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

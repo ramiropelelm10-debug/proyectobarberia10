@@ -13,12 +13,11 @@ class ReservaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $reservas = Reserva::all(); //trae todas las reservas de la base de datos 
-
-        return view('admin.reserva.index', compact('reservas'));
-        //muestra la pagina donde se ve todas reservas  y pasan los datos 
-    }
+   {
+    // Antes: $reservas = Reserva::all();
+    $reservas = Reserva::paginate(10); // 10 reservas por página
+    return view('admin.reserva.index', compact('reservas'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -43,25 +42,31 @@ class ReservaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // 1. Validar los datos que vienen del formulario
-        // Nos aseguramos de que el usuario haya seleccionado cliente, barbero
-        // y que la fecha y hora sean correctas
-        $request->validate([
-            'id_cliente' => 'required|exists:clientes,id',  // obligatorio y debe existir en la tabla clientes
-            'id_barbero' => 'required|exists:barberos,id', // obligatorio y debe existir en la tabla barberos
-            'fecha_hora' => 'required|date',               // obligatorio y debe ser una fecha válida
-            'estado' => 'required|in:pendiente,confirmada,cancelada', // opcionalmente validamos el estado
-        ]);
+ public function store(Request $request)
+{
+    // 1️⃣ Validar los datos del formulario
+    $request->validate([
+        'id_cliente' => 'required|exists:clientes,id',
+        'id_barbero' => 'required|exists:barberos,id',
+        'fecha_hora' => 'required|date_format:Y-m-d\TH:i', // Formato de datetime-local
+        'estado'     => 'required|in:pendiente,confirmada,cancelada',
+    ]);
 
-        // 2. Crear la nueva reserva en la base de datos usando el modelo Reserva
-        // $request->all() toma todos los campos enviados del formulario
-        Reserva::create($request->all());
+    // 2️⃣ Convertir la fecha al formato que MySQL acepta
+    $fechaHora = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->fecha_hora);
 
-        // 3. Redirigir al listado de reservas con un mensaje de éxito
-        return redirect()->route('reserva.index')->with('success', 'Reserva creada correctamente');
-    }
+    // 3️⃣ Crear la reserva en la base de datos
+    Reserva::create([
+        'id_cliente' => $request->id_cliente,
+        'id_barbero' => $request->id_barbero,
+        'fecha_hora' => $fechaHora,
+        'estado'     => $request->estado,
+    ]);
+
+    // 4️⃣ Redirigir al listado de reservas con mensaje de éxito
+    return redirect()->route('reserva.index')->with('success', 'Reserva creada correctamente');
+}
+
 
     /**
      * Display the specified resource.
