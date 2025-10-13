@@ -43,7 +43,7 @@
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                            id="email" name="email"
-                           value="{{ old('email', $barbero->email) }}"
+                           value="{{ old('email', $cliente->email) }}"
                            placeholder="example@domain.com" required />
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -55,7 +55,7 @@
                     <label for="telefono" class="form-label">Telefono</label>
                     <input type="text" class="form-control @error('telefono') is-invalid @enderror"
                            id="telefono" name="telefono"
-                           value="{{ old('telefono', $telfono->telefono) }}"
+                           value="{{ old('telefono', $cliente->telefono) }}"
                            placeholder="Ej:  87654321, 12345678, etc." required />
                     @error('telefono')
                         <div class="invalid-feedback">{{ $message }}</div>

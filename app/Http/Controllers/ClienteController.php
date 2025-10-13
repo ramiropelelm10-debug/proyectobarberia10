@@ -16,7 +16,7 @@ class ClienteController extends Controller
     {
         // Trae todos los clientes de la base de datos usando el modelo Cliente
         $clientes = Cliente::all();
-        //dd($clientes);
+        // dd($clientes);
         // Retorna la vista 'clientes.index' y le pasa la variable $clientes
         // Compact crea un arreglo con la variable que se va a usar en la vista
         return view('admin.cliente.index', compact('clientes'));
@@ -78,7 +78,7 @@ class ClienteController extends Controller
     public function edit(Cliente $cliente)
     {
         $cliente = Cliente::findOrFail($cliente->id);
-        return view('clientes.edit', compact('cliente'));
+        return view('admin.cliente.edit', compact('cliente'));
     }
 
     /**
@@ -102,7 +102,7 @@ class ClienteController extends Controller
         ]);
 
         // 3️⃣ Redirigir al listado de clientes con un mensaje de éxito
-        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado.corectamente');
+        return redirect()->route('cliente.index')->with('success', 'Cliente actualizado.corectamente');
     }
 
     /**

@@ -43,17 +43,13 @@
                     <option value="">-- Selecciona una Reserva --</option>
                     @foreach ($reservas as $reserva)
                         <option value="{{ $reserva->id }}">
-                            {{ $reserva->fecha }} - {{ $reserva->hora }}
+                            {{ $reserva->fecha_hora}}  -  {{ $reserva->cliente->nombre}} 
                         </option>
                     @endforeach
                 </select>
             </div>
 
-            {{-- Precio --}}
-            <div class="form-group mb-3">
-                <label for="precio">Precio Total:</label>
-                <input type="number" name="precio" id="precio" class="form-control" step="0.01" required>
-            </div>
+           
 
             {{-- Descripción --}}
             <div class="form-group mb-3">
@@ -72,6 +68,19 @@
                         </label>
                     </div>
                 @endforeach
+            </div>
+        
+             {{-- Precio --}}
+            <div class="form-group mb-3">
+                <label for="precio">Precio Total:</label>
+                {{-- <input type="number" name="precio" id="precio" class="form-control" step="0.01" required> --}}
+                {{-- <select name="precio" id="precio">
+                    <option value="10">10</option>
+                                        <option value="20">20</option>
+                                                            <option value="12">12</option> --}}
+
+
+                {{-- </select> --}}
             </div>
 
             {{-- Botón Guardar --}}

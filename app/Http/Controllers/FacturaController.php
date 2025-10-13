@@ -44,7 +44,7 @@ return view('admin.factura.index', compact('facturas'));
     $request->validate([
         'id_cliente' => 'required|exists:clientes,id',  // El cliente es obligatorio y debe existir
         'id_reserva' => 'required|exists:reservas,id',  // La reserva es obligatoria y debe existir
-        'precio'     => 'required|numeric',            // El precio es obligatorio y debe ser un número
+        // 'precio'     => 'required|numeric',            // El precio es obligatorio y debe ser un número
         'descripcion'=> 'nullable|string',             // La descripción es opcional
         'servicios'  => 'required|array',              // Los servicios deben ser enviados como un arreglo
         'servicios.*'=> 'exists:servicios,id',         // Cada servicio debe existir en la tabla servicios
@@ -54,9 +54,11 @@ return view('admin.factura.index', compact('facturas'));
     $factura = Factura::create([
         'id_cliente' => $request->id_cliente,
         'id_reserva' => $request->id_reserva,
-        'precio'     => $request->precio,
+        // 'precio'     => $request->precio,
+        'precio'     =>0,
         'descripcion'=> $request->descripcion,
-        'total'      => $request->precio, // Puedes ajustar si el total depende de los servicios
+        // 'total'      => $request->precio, // Puedes ajustar si el total depende de los servicios
+         'total' =>0,
     ]);
 
     // Guardar los detalles de la factura (relación 1 a N con detalle_factura)

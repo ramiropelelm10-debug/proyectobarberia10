@@ -59,7 +59,7 @@
             <!-- Imagen del servicio -->
             <div class="mb-3">
                 <label for="imagen" class="form-label @error('imagen') is-invalid @enderror">Imagen</label>
-                <input type="text" class="form-control" id="imagen" name="imagen" 
+                <input type="file" class="form-control" id="imagen" name="imagen" 
                        value="{{ old('imagen') }}" placeholder="Ingrese la ruta o nombre de la imagen" required>
                 @error('imagen')
                     <div class="invalid-feedback">{{ $message }}</div>
