@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.main')
 
 @section('title', 'Reservas')
@@ -10,7 +11,7 @@
                 <div class="card-title">Listado de Reservas</div>
 
                 <!-- Botón para crear una nueva reserva -->
-                <a href="{{ route('reserva.create') }}" class="btn btn-primary">Nueva Reserva</a>
+                <a href="{{ route('barbero.reservas.create',$user_id) }}" class="btn btn-primary">Nueva Reserva</a>
             </div>
         </div>
 
@@ -49,12 +50,12 @@
                             </td>
                             <td>
                                 <!-- Botón para editar la reserva -->
-                                <a href="{{ route('reserva.edit', $reserva->id) }}" class="btn btn-sm btn-primary" title="Editar">
+                                <a href="{{ route('barbero.reservas.edit',[$user_id, $reserva->id]) }}" class="btn btn-sm btn-primary" title="Editar">
                                     Editar
                                 </a>
 
                                 <!-- Formulario para eliminar la reserva -->
-                                <form action="{{ route('reserva.destroy', $reserva->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('barbero.reservas.destroy', [$user_id, $reserva->id]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger btn-eliminar">Eliminar</button>

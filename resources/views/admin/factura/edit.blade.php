@@ -49,6 +49,8 @@
             </div>
 
             <!-- Detalle de la factura: seleccionar servicios -->
+
+            {{-- TODO Areglar listado de servicios  --}}
             <div class="mb-3">
                 <label for="servicios" class="form-label @error('servicios') is-invalid @enderror">Servicios</label>
                 <select name="servicios[]" class="form-select" id="servicios" multiple required>
